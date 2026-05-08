@@ -139,6 +139,19 @@ http://localhost:8000/docs
 
 ---
 
+## Demo
+
+### Dashboard
+![Dashboard](./dashboard.png)
+
+### Login
+![Login](./login.png)
+
+### API
+![API](./api.png)
+
+---
+
 ## Key Highlights
 
 - Event-driven architecture using Redis and Celery
