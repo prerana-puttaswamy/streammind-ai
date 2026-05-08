@@ -1,3 +1,9 @@
+## Repository
+
+This project demonstrates a real-time, event-driven architecture with asynchronous processing, live dashboard updates, authentication, and containerized deployment.
+
+---
+
 # StreamMind AI — Real-Time Event Intelligence Platform
 
 StreamMind AI is a full-stack, real-time event monitoring system designed to model modern distributed architectures. It processes events asynchronously, performs analytics, detects anomalies, and streams live updates to a web dashboard using WebSockets.
