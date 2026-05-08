@@ -58,8 +58,6 @@ Celery Workers
 
 ---
 
----
-
 ## Tech Stack
 
 ### Backend
