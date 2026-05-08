@@ -99,3 +99,67 @@ Celery Workers
 
 ```bash
 docker compose up --build
+
+---
+
+### Access
+
+Frontend:
+http://localhost:3000
+
+Backend:
+http://localhost:8000/docs
+
+---
+
+## API Endpoints
+
+### Auth
+- POST /register
+- POST /login
+
+### Events
+- POST /events
+- GET /events
+
+### Analytics
+- GET /analytics
+
+### WebSocket
+- /ws/events
+
+---
+
+## Example Event
+{
+"event_type": "payment",
+"status": "failed",
+"source": "checkout-service",
+"message": "payment timeout error"
+}
+
+---
+
+## Key Highlights
+
+- Event-driven architecture using Redis and Celery
+- Real-time updates using WebSockets
+- Full-stack system with clear separation of concerns
+- Authentication and protected routes
+- Fully Dockerized
+
+---
+
+## Future Improvements
+
+- Role-based authentication
+- Event filtering and search
+- Kafka integration
+- Cloud deployment
+- Monitoring (Prometheus, Grafana)
+
+---
+
+## Author
+
+Prerana Puttaswamy
