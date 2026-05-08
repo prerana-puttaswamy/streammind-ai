@@ -1,21 +1,52 @@
-# StreamMind AI
+# StreamMind AI — Real-Time Event Intelligence Platform
 
-Real-time Event Intelligence Platform built with FastAPI, Redis, Celery, and Next.js.
+StreamMind AI is a full-stack, real-time event monitoring system designed to model modern distributed architectures. It processes events asynchronously, performs analytics, detects anomalies, and streams live updates to a web dashboard using WebSockets.
 
----
-
-## Features
-
-- ⚡ Async event processing using Celery
-- 📡 Real-time updates via WebSockets
-- 📊 Analytics dashboard with charts
-- 🚨 Anomaly detection (failure rate monitoring)
-- 🔐 JWT authentication (login/register)
-- 🐳 Fully Dockerized microservices architecture
+The system demonstrates backend scalability patterns, event-driven design, and real-time UI synchronization commonly used in production systems.
 
 ---
 
-## Architecture
+## Overview
+
+This project simulates an event pipeline where incoming events are processed asynchronously and visualized in real time. It integrates background workers, message queues, and a live frontend to provide an end-to-end monitoring solution.
+
+---
+
+## Key Features
+
+### Asynchronous Event Processing
+- Events are handled using Celery workers
+- Background processing decouples ingestion from execution
+- Supports scalable task execution patterns
+
+### Real-Time Updates
+- Uses Redis Pub/Sub for event propagation
+- FastAPI WebSocket endpoint streams updates to frontend
+- Eliminates polling by pushing updates instantly
+
+### Analytics Dashboard
+- Displays total, successful, and failed events
+- Calculates failure rate dynamically
+- Visualizes data using charts (Recharts)
+
+### Anomaly Detection
+- Detects abnormal failure rates in real time
+- Triggers alert banner in dashboard
+- Demonstrates basic monitoring logic used in production
+
+### Authentication
+- JWT-based login and registration
+- Password hashing using bcrypt
+- Protected frontend routes using token validation
+
+### Containerized Architecture
+- Fully Dockerized using Docker Compose
+- Independent services for frontend, backend, worker, and Redis
+- Simplifies local development and deployment
+
+---
+
+## System Architecture
 
 Frontend (Next.js)  
 ⬇  
@@ -27,19 +58,46 @@ Celery Workers
 
 ---
 
+---
+
 ## Tech Stack
 
+### Backend
 - FastAPI
-- Redis
+- SQLAlchemy
 - Celery
-- Next.js
-- Docker
+- Redis
+- Python-JOSE (JWT)
+- Passlib (bcrypt)
+
+### Frontend
+- Next.js (App Router)
+- React
 - Recharts
-- JWT Auth
+
+### Infrastructure
+- Docker
+- Docker Compose
 
 ---
 
-## Run Locally
+## How It Works
+
+1. Client sends an event via API (`POST /events`)
+2. Event is queued and processed by Celery worker
+3. Worker stores event in database
+4. Worker publishes event to Redis channel
+5. FastAPI listens to Redis and broadcasts via WebSocket
+6. Frontend receives event and updates UI instantly
+
+---
+
+## Running Locally
+
+### Prerequisites
+- Docker installed
+
+### Start the application
 
 ```bash
 docker compose up --build
