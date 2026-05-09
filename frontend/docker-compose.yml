@@ -1,0 +1,34 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: streammind-redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./backend
+    container_name: streammind-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+
+  worker:
+    build: ./backend
+    container_name: streammind-worker
+    command: celery -A app.celery_worker.celery_app worker --loglevel=info --pool=solo
+    depends_on:
+      - redis
+      - backend
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+
+  frontend:
+    build: ./frontend
+    container_name: streammind-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
