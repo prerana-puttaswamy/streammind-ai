@@ -7,7 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   async function handleLogin() {
-    const res = await fetch("http://streammind-backend.onrender.com/login", {
+    const res = await fetch("https://streammind-backend.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

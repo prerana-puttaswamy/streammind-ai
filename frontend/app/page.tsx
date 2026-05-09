@@ -36,7 +36,7 @@ export default function Home() {
 
   async function fetchData() {
     const [eventsRes, analyticsRes] = await Promise.all([
-      fetch("ttps://streammind-backend.onrender.com/events"),
+      fetch("https://streammind-backend.onrender.com/events"),
       fetch("https://streammind-backend.onrender.com/analytics"),
     ]);
 
